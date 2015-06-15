@@ -1,83 +1,79 @@
-var Enemy = function(x, y) {
+var Enemy1 = function(x, y) {
 	
-	this.sprite = new Sprite //();
+function spawnenemy1()
+{
+	var type = rand(0, 2);
 	
-	this.sprite.buildAnimation//();
-	this.sprite.setAnimationOffset//();
-
+	var enemy1 = {};
 	
+	enemy1.image = document.createElement("img");
+	enemy1.image.src = //add enemy file name;
+	enemy1.width = //add enemy width;
+	enemy1.height = // add enemy hight;
 	
+	var x = SCREEN_WIDTH/2;
+	var y = SCREEN_HEIGHT/2;
 	
-	this.width = //;
-	this.height = //;
+	var dirX = rand(-10,10);
+	var dirY = rand(-10,10);
 	
-	this.position = new Vector2();
-	this.position.set(x, y);
+	var magnitude = (dirX * dirX) + (dirY * dirY);
+	if(magnitude !=0)
+	{
+		var oneOverMag = 1 / Math.sqrt(magnitude);
+		dirX *= oneOverMag;
+		dirY *= oneOverMag;
+	}
 	
-	this.velocity = new Vector2();
+	var movX = dirX * SCREEN_WIDTH;
+	var movY = dirY * SCREEN_HEIGHT;
 	
-	this.moveRight = true;
-	this.pause = 0;
+	enemy1.x = x + movX;
+	enemy1.y = y + movY;
+	
+	enemy1.velocityX = -dirX * enemy1_SPEED;
+	enemy1.velocityY = -dirY * enemy1_SPEED;
+	
+	enemy1.push(enemy);
+	
 }
 
-
-
-
-Enemy.prototype.update = function(dt)
-{
-	this.sprite.update(dt);
+var Enemy2 = function(x, y) {
 	
-	if(this.pause > 0)
+function spawnenemy2()
+{
+	var type = rand(0, 2);
+	
+	var enemy2 = {};
+	
+	enemy2.image = document.createElement("img");
+	enemy2.image.src = //add enemy file name;
+	enemy2.width = //add enemy width;
+	enemy2.height = // add enemy hight;
+	
+	var x = SCREEN_WIDTH/2;
+	var y = SCREEN_HEIGHT/2;
+	
+	var dirX = rand(-10,10);
+	var dirY = rand(-10,10);
+	
+	var magnitude = (dirX * dirX) + (dirY * dirY);
+	if(magnitude !=0)
 	{
-		this.pause -= dt;
-	}
-	else
-	{
-		var ddx = 0;
-		
-		var tx = pixelToTile(this.position.x);
-		var ty = pixelToTile(this.position.y);
-		var nx = (this.position.x)%TILE;
-		var ny = (this.position.y)%TILE;
-		var cell = cellAtTileCoord(LAYER_PLATFORMS, tx, ty);
-		var cellright = cellAtTileCoord(LAYER_PLATFORMS, tx, + 1, ty);
-		var celldown = cellAtTileCoord(LAYER_PLATFORMS, tx, ty + 1);
-		var celldiag = cellAtTileCoord(LAYER_PLATFORMS, tx +1, ty + 1);
-		
-		if(this.moveRight)
-		{
-			if(celldiag && !cellright){
-				ddx = ddx + ENEMY_ACCEL;
-				  
-			}
-			else{
-				this.velocity.x = 0;
-				this.moveRight = false;
-				this.pause = 0.5;
-			}
-			  }
-            if(!this.moveRight)
-            {
-                if(celldown && !cell) {
-                    ddx = ddx - ENEMY_ACCEL; 
-                    
-                }
-                else {
-                    this.velocity.x = 0;
-                    this.moveRight = true;
-                    this.pause = 0.5;
-                    
-                }
-            
-			}
-		
-		this.position.x = Math.floor(this.position.x + (dt * this.velocity.x));
-		this.velocity.x = bound(this.velocity.x + (dt * ddx),
-		-ENEMY_MAXDX, ENEMY_MAXDX);
-		}
+		var oneOverMag = 1 / Math.sqrt(magnitude);
+		dirX *= oneOverMag;
+		dirY *= oneOverMag;
 	}
 	
-	Enemy.prototype.draw = function()
-{
-	this.sprite.draw(context, this.position.x - worldOffsetX, this.position.y);
+	var movX = dirX * SCREEN_WIDTH;
+	var movY = dirY * SCREEN_HEIGHT;
+	
+	enemy2.x = x + movX;
+	enemy2.y = y + movY;
+	
+	enemy2.velocityX = -dirX * enemy1_SPEED;
+	enemy2.velocityY = -dirY * enemy1_SPEED;
+	
+	enemy2.push(enemy);
+	
 }
