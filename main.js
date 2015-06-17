@@ -33,3 +33,14 @@ var KEY_W = 87;
 var KEY_D = 68;
 var KEY_Q = 81;
 var KEY_E = 69;
+
+function run()
+{
+	//FPS
+	 context.fillStyle = "#f00";
+	 context.font="12px Arial";
+	 context.fillText("FPS: " + fps, 5, 20, 100);
+
+
+
+}
