@@ -31,19 +31,6 @@ function run()
 	 
 	 var deltaTime =getDeltaTime();
 	 
-	 switch(gameState)
-	{
-		case STATE_SPLASH:
-		runSplash(deltaTime);
-		break;
-		case STATE_GAME:
-		runGame(deltaTime);
-		break;
-		case STATE_GAMEOVER:
-		runGameOver(deltaTime);
-		break;
-	}
-
 	 stateManager.update(deltaTime);
 	 stateManager.draw();	
 }
