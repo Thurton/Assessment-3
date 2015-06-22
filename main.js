@@ -47,7 +47,7 @@ function run()
 
 	//SCORE
 	 context.fillStyle = "yellow";
-	 context.font= "25px Arial";
+	 context.font= "20px Arial";
 	 var scoreText = "SCORE: " + score;
 	 context.fillText(scoreText, SCREEN_WIDTH - 827, 660);
 	 
