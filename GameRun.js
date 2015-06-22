@@ -29,7 +29,7 @@ function Run()
 	 {
 	 // 10 is the distance from the top of context
 	 // 20 is the gap between the lives icons
-		 context.drawImage (heartImage, 100*i, 660);
+		 context.drawImage (heartImage, 200*i, 660);
 	 } 
 
 }
