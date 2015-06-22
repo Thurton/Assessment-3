@@ -41,6 +41,18 @@ function run()
 	 context.font="12px Arial";
 	 context.fillText("FPS: " + fps, 5, 20, 100);
 
-
+	//SCORE
+	 context.fillStyle = "yellow";
+	 context.font= "25px Arial";
+	 var scoreText = "SCORE: " + score;
+	 context.fillText(scoreText, SCREEN_WIDTH - 265, 31);
+	 
+	//LIFE COUNTER
+	 for(var i=0; i<lives; i++)
+	 {
+	 // 10 is the distance from the top of context
+	 // 20 is the gap between the lives icons
+		 context.drawImage (heartImage, 30*i, 10);
+	 }
 
 }
