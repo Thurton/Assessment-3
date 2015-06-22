@@ -1,3 +1,18 @@
+var LAYER_COUNT = 2;
+var LAYER_BACKGROUND = 0;
+var LAYER_ENEMIES = 1;
+var MAP = {tw: 25, th: 283};
+var TILE = 35;
+var TILESET_TILE = TILE * 1;
+var TILESET_PADDING = 2;
+var TILESET_SPACING = 2;
+var TILESET_COUNT_X = 25;
+var TILESET_COUNT_Y = 283;
+var tileset = document.createElement("img");
+tileset.src = "assets/Level1_BG.jpg";
+var cells = [];
+
+
 function Run()
 {
 	 drawMap();
