@@ -4,6 +4,8 @@ var context = canvas.getContext("2d");
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 
+var stateManager = new stateManager();
+stateManager.pushState(new SplashState());
 
 function getDeltaTime()
 {
@@ -29,8 +31,9 @@ function run()
 	 context.fillStyle = "#ccc";
 	 context.fillRect(0, 0, canvas.width, canvas.height);
 	 
-	 var deltaTime =getDeltaTime();
+	 var deltaTime = getDeltaTime();
 	 
 	 stateManager.update(deltaTime);
-	 stateManager.draw();	
+	 stateManager.draw();
+	 
 }
