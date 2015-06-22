@@ -31,6 +31,37 @@ if(shootTimer > 0)
 			bullets[i].x - bullets[i].width/2,
 			bullets[i].y - bullets[i].height/2)
 	}
+	
+	for(var i=0; i<enemies.length; i++)
+	{
+		for(var j=0; j<bullets.length; j++)
+		{
+			if(intersects(
+				bullets[j].x, bullets[j].y,
+				bullets[j].width, bullets[j].height,
+				enemies[i].x, enemies[i].y,
+				enemies[i].width, enemies[i].height) == true)
+			{
+				enemies.splice(i, 1);
+				bullets.splice(j, 1);
+				break;
+			}
+		}
+	}
+	
+	for(var i=0; i<enemies.length; i++)
+	{
+		if(intersects(
+				player.x, player.y,
+				player.width, player.height,
+				enemies[i].x, enemies[i].y,
+				enemies[i].width, enemies[i].height) == true)
+			{
+				enemies.splice(i, 1);
+				player.isDead = true;
+				break;
+			}
+	}
 
 
 //BULLETS ARRAY
