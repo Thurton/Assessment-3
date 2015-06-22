@@ -28,7 +28,22 @@ function run()
 {
 	 context.fillStyle = "#ccc";
 	 context.fillRect(0, 0, canvas.width, canvas.height);
+	 
+	 var deltaTime =getDeltaTime();
+	 
+	 switch(gameState)
+	{
+		case STATE_SPLASH:
+		runSplash(deltaTime);
+		break;
+		case STATE_GAME:
+		runGame(deltaTime);
+		break;
+		case STATE_GAMEOVER:
+		runGameOver(deltaTime);
+		break;
+	}
 
 	 stateManager.update(deltaTime);
-	 stateManager.draw();
+	 stateManager.draw();	
 }
