@@ -2,7 +2,7 @@ var Player = function(){
     this.sprite = new Sprite("assets/player.png");
     this.sprite.buildAnimation(1, 1, 34, 45, 1, [0]);
     this.position = new Vector2(SCREEN_HEIGHT, SCREEN_WIDTH/2);
-    this.speed = (METER / 4);
+    this.speed = (SCREEN_WIDTH / 10);
 }
 
 Player.prototype.update = function(dt)
