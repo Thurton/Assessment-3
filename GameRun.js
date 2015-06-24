@@ -1,3 +1,5 @@
+var SCREEN_WIDTH = canvas.width;
+var SCREEN_HEIGHT = canvas.height;
 var LAYER_COUNT = 2;
 var LAYER_BACKGROUND = 0;
 var LAYER_ENEMIES = 1;
@@ -11,6 +13,17 @@ var TILESET_COUNT_Y = 283;
 var tileset = document.createElement("img");
 tileset.src = "assets/Level1_BG.jpg";
 var cells = [];
+var enemies = [];
+var bullets = [];
+var worldOffsetX = 0;
+var score = 0;
+var lives = 03;
+var Health_Lives = document.createElement("img");
+var fps = 0;
+var fpsCount = 0;
+var fpsTime = 0;
+var player = new Player();
+var keyboard = new Keyboard();
 
 function cellAtPixelCoord(layer, x,y)
 {
@@ -94,6 +107,57 @@ function drawMap()
              }
          }
      }
+}
+
+function addEnemies() {
+    enemies.splice(0,enemies.length);
+    idx = 0;
+    for(var y = 0; y < level1.layers[LAYER_OBJECT_ENEMIES].height; y++) {
+        for(var x = 0; x < level1.layers[LAYER_OBJECT_ENEMIES].width; x++) {
+            if(level1.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
+            var px = tileToPixel(x);
+            var py = tileToPixel(y);
+            var e = new Enemy(px,py);
+            enemies.push(e);
+            }
+        idx++;
+        }
+    }
+}
+
+function initialize() {
+    for(var layerIdx = 0; layerIdx < LAYER_COUNT; layerIdx++) {
+        cells[layerIdx] = [];
+        var idx = 0;
+        for(var y = 0; y < level1.layers[layerIdx].height; y++) {
+            cells[layerIdx][y] = [];
+            for(var x = 0; x < level1.layers[layerIdx].width; x++) {
+                if(level1.layers[layerIdx].data[idx] != 0) {
+                    cells[layerIdx][y][x] = 1;
+                    cells[layerIdx][y-1][x-1] = 1;
+                    cells[layerIdx][y-1][x+1] = 1;
+                    cells[layerIdx][y][x+1] = 1;
+                }
+                else if(cells[layerIdx][y][x] != 1) {
+                    cells[layerIdx][y][x] = 0;
+                }
+                idx++;
+            }
+        }
+    }
+	
+	musicBackground = new Howl(
+    {
+        urls: ["assets/Game_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume:0.2,
+        onend: function() {
+            musicBackground.play()
+        }
+    });
+	
+	addEnemies();
 }
 
 function Run()
