@@ -1,3 +1,24 @@
+var GameRun = function() 
+{
+	this.prototype = BaseState;
+}
+
+GameRun.prototype.load = function() 
+{
+}
+
+GameRun.prototype.unload = function() 
+{
+}
+
+GameRun.prototype.update = function(dt)
+{
+}
+
+GameRun.prototype.draw = function() 
+{
+}
+
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 var SCREEN_WIDTH = canvas.width;
