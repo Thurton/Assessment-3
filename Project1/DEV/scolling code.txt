@@ -1,0 +1,3 @@
+if(background.position.y !== background height){
+    background.position.y -= scroll speed
+}
