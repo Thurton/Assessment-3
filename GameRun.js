@@ -1,3 +1,5 @@
+var canvas = document.getElementById("gameCanvas");
+var context = canvas.getContext("2d");
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 var LAYER_COUNT = 2;
