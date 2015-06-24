@@ -16,7 +16,7 @@ SplashState.prototype.update = function(dt)
 {
     if( keyboard.isKeyDown( keyboard.KEY_ENTER ) == true)
     {
-        stateManager.switchState(new GameState());
+        stateManager.switchState(new GameRun());
     }
 }
 
