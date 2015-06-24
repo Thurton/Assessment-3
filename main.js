@@ -4,7 +4,7 @@ var context = canvas.getContext("2d");
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 
-var stateManager = new stateManager();
+var stateManager = new StateManager();
 stateManager.pushState(new SplashState());
 
 function getDeltaTime()
