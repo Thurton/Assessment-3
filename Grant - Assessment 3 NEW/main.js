@@ -412,7 +412,7 @@ function runGame()
     context.fillStyle = "yellow";
     context.font = "Bold " + "20px Arial";
     context.textAlign = "end";
-    context.fillText(score, 0 , 0);
+    context.fillText(score, 900 , 670);
     if(score <= 0)
     {
         score = 0;
