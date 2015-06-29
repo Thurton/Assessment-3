@@ -77,7 +77,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 
 var tileset = document.createElement("img");
-tileset.src = "assets/Level1_BG_1.jpg";
+tileset.src = "assets/Level1_BG_tiles.jpg";
 
 function cellAtPixelCoord(layer, x,y)
 {
