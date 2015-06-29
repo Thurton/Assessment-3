@@ -325,7 +325,7 @@ function gameOver()
 function runSplash()
 {
     context.drawImage(titleImg, 0, 0);
-    if(keyboard.isKeyDown(keyboard.KEY_SHIFT) == true) {
+    if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true) {
 		startGame();
 	}
 }
@@ -434,7 +434,7 @@ function runGame()
         gameOver();
     }
     //when player is at the exit, win
-    if(player.position.x > (METER * 171) - 71)
+    if(player.position.x > (METER * 10500) - 500)
     {
         player.isAlive = false;
         win = true;
