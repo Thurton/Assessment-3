@@ -38,7 +38,7 @@ var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
 var MAP = {tw: 283, th: 25};
 var TILE = 35;
-var TILESET_TILE = TILE * 2;
+var TILESET_TILE = TILE * 1;
 var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
 var TILESET_COUNT_X = 283;
@@ -187,9 +187,9 @@ function initialize() {
             for(var x = 0; x < level1.layers[layerIdx].width; x++) {
                 if(level1.layers[layerIdx].data[idx] != 0) {
                     cells[layerIdx][y][x] = 1;
-                    cells[layerIdx][y-1][x-1] = 1;
-                    cells[layerIdx][y-1][x+1] = 1;
-                    cells[layerIdx][y][x+1] = 1;
+                    //cells[layerIdx][y-1][x-1] = 1;
+                    //cells[layerIdx][y-1][x+1] = 1;
+                    //cells[layerIdx][y][x+1] = 1;
                 }
                 else if(cells[layerIdx][y][x] != 1) {
                     cells[layerIdx][y][x] = 0;

@@ -161,10 +161,10 @@ Player.prototype.update = function(deltaTime)
 	var ty = pixelToTile(this.position.y);
 	var nx = (this.position.x)%TILE; // true if player overlaps right
 	var ny = (this.position.y)%TILE; // true if player overlaps below
-	var cell = cellAtTileCoord(LAYER_PLATFORMS, tx, ty);
-	var cellright = cellAtTileCoord(LAYER_PLATFORMS, tx + 1, ty);
-	var celldown = cellAtTileCoord(LAYER_PLATFORMS, tx, ty + 1);
-	var celldiag = cellAtTileCoord(LAYER_PLATFORMS, tx + 1, ty + 1);
+	var cell = cellAtTileCoord(LAYER_BACKGROUND, tx, ty);
+	var cellright = cellAtTileCoord(LAYER_BACKGROUND, tx + 1, ty);
+	var celldown = cellAtTileCoord(LAYER_BACKGROUND, tx, ty + 1);
+	var celldiag = cellAtTileCoord(LAYER_BACKGROUND, tx + 1, ty + 1);
 	
 	//stop player's vertical velocity and clamp their y position
 	if(this.velocity.y > 0) {
