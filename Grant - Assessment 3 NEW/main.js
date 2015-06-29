@@ -187,15 +187,9 @@ function initialize() {
             for(var x = 0; x < level1.layers[layerIdx].width; x++) {
                 if(level1.layers[layerIdx].data[idx] != 0) {
                     cells[layerIdx][y][x] = 1;
-<<<<<<< HEAD
                     //cells[layerIdx][y-1][x-1] = 1;
                     //cells[layerIdx][y-1][x+1] = 1;
                     //cells[layerIdx][y][x+1] = 1;
-=======
-                  //  cells[layerIdx][y-1][x-1] = 1;
-                  //  cells[layerIdx][y-1][x+1] = 1;
-                  //  cells[layerIdx][y][x+1] = 1;
->>>>>>> 38a856734346e483c175d5007afd07b16598e05c
                 }
                 else if(cells[layerIdx][y][x] != 1) {
                     cells[layerIdx][y][x] = 0;
@@ -418,7 +412,7 @@ function runGame()
     context.fillStyle = "gray";
     context.font = "Bold " + "20px Arial";
     context.textAlign = "end";
-    context.fillText(score, 570 , 31);
+    context.fillText(score, 0 , 0);
     if(score <= 0)
     {
         score = 0;
