@@ -420,15 +420,13 @@ function runGame()
     //draw lives
     context.textAlign = "start";
     Health_Lives.src = "assets/lives.png";
-    context.drawImage(Health_Lives, 0, 0);
-    if(lives < 10)
-        context.fillText(" x 0" + lives, 75, 80);
+      if(lives < 10)
+        context.fillText(" x 0" + lives, 60, 670);
     else if(lives >= 10)
-        context.fillText(" x " + lives, 75, 80);
+        context.fillText(" x " + lives, 60, 670);
     if(lives > 99)
         lives = 99;
 	
-
     //when lives < 0, game over
     if(lives < 0)
     {
