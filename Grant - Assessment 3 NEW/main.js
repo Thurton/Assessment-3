@@ -59,7 +59,7 @@ var worldOffsetX = 0;
 var score = 0;
 var lives = 03;
 var hp = 3;
-var Score_BGImage = document.createElement("img");
+var HUD = document.createElement("img");
 var Health_Lives = document.createElement("img");
 var LifeHeart = document.createElement("img");
 var gameOverTimer = 9.22;
@@ -407,9 +407,9 @@ function runGame()
     }       
         
     //draw score
-    Score_BGImage.src = "assets/HUD.png";
-    context.drawImage(Score_BGImage, 0, 0);
-    context.fillStyle = "gray";
+    HUD.src = "assets/HUD.png";
+    context.drawImage(HUD, 0, 0);
+    context.fillStyle = "yellow";
     context.font = "Bold " + "20px Arial";
     context.textAlign = "end";
     context.fillText(score, 0 , 0);
@@ -443,7 +443,7 @@ function runGame()
     // draw the FPS
     context.fillStyle = "#5a5a5a";
     context.font="14px Arial";
-    context.fillText("FPS: " + fps, 5, 470, 100);
+    context.fillText("FPS: " + fps, 5, 30, 100);
 }
 
 function runGameOver()
