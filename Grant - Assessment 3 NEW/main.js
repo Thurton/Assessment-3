@@ -187,9 +187,9 @@ function initialize() {
             for(var x = 0; x < level1.layers[layerIdx].width; x++) {
                 if(level1.layers[layerIdx].data[idx] != 0) {
                     cells[layerIdx][y][x] = 1;
-                    cells[layerIdx][y-1][x-1] = 1;
-                    cells[layerIdx][y-1][x+1] = 1;
-                    cells[layerIdx][y][x+1] = 1;
+                  //  cells[layerIdx][y-1][x-1] = 1;
+                  //  cells[layerIdx][y-1][x+1] = 1;
+                  //  cells[layerIdx][y][x+1] = 1;
                 }
                 else if(cells[layerIdx][y][x] != 1) {
                     cells[layerIdx][y][x] = 0;
@@ -407,7 +407,7 @@ function runGame()
     }       
         
     //draw score
-    Score_BGImage.src = "assets/Score_BGImage.png";
+    Score_BGImage.src = "assets/HUD.png";
     context.drawImage(Score_BGImage, 0, 0);
     context.fillStyle = "gray";
     context.font = "Bold " + "20px Arial";
@@ -419,7 +419,7 @@ function runGame()
     }
     //draw lives
     context.textAlign = "start";
-    Health_Lives.src = "assets/Health_Lives.png";
+    Health_Lives.src = "assets/lives.png";
     context.drawImage(Health_Lives, 0, 0);
     if(lives < 10)
         context.fillText(" x 0" + lives, 75, 80);
@@ -428,20 +428,7 @@ function runGame()
     if(lives > 99)
         lives = 99;
 	
-    //draw hp
-    LifeHeart.src = "assets/LifeHeart.png";
-    if (hp >= 1)
-        context.drawImage(LifeHeart, 55, 18);
-    if (hp >= 2)
-        context.drawImage(LifeHeart, 55 + (LifeHeart.width + 2), 18);
-    if (hp >= 3)
-        context.drawImage(LifeHeart, 55 + ((LifeHeart.width + 2) + (LifeHeart.width + 2)), 18);
-    
-    //when hp < 1, lose a life
-    if (hp < 1)
-    {
-        player.isAlive = false;
-    }
+
     //when lives < 0, game over
     if(lives < 0)
     {
