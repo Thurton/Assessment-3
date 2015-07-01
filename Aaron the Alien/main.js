@@ -120,6 +120,9 @@ var BULLET_SPEED = 2.5;
 var HUD = document.createElement("img");
 var score = 0;
 var starGen = [];
+var lives = 03;
+var Health_Lives = document.createElement("img");
+var keyboard = new Keyboard();
 
 var player = {
 	image: document.createElement("img"),
@@ -150,12 +153,13 @@ function runSplash(deltaTime)
 {
 	musicBackground.stop();
         musicTitle.play();
-	splashTimer -= deltaTime;
-	if(splashTimer <= 0)
-	{
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true) {
 		gameState = STATE_GAME;
 		return;
 	}
+	
+	
+
 	
 		for(var y=0; y<15; y++)
 	{
@@ -258,6 +262,21 @@ for (var i = 0; i < 50; i++)
 		context.drawImage(asteroids[i].image, asteroids[i].x, asteroids[i].y);
 	}
 	
+	    context.textAlign = "start";
+    Health_Lives.src = "assets/lives.png";
+      if(lives < 10)
+        context.fillText(" x 0" + lives, 60, 670);
+    else if(lives >= 10)
+        context.fillText(" x " + lives, 60, 670);
+    if(lives > 99)
+        lives = 99;
+	
+    //when lives < 0, game over
+    if(lives < 0)
+    {
+        win = false;
+        gameOver();
+    }
 	spawnTimer -= deltaTime;
 	if(spawnTimer <= 0)
 	{  
