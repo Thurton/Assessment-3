@@ -39,40 +39,7 @@ var fps = 0;
 var fpsCount = 0;
 var fpsTime = 0;
 
-  musicBackground = new Howl(
-    {
-        urls: ["assets/Game_Music.ogg"],
-        loop: true,
-        buffer: true,
-        volume:0.2,
-        onend: function() {
-            musicBackground.play()
-        }
-    });
-    
-    musicTitle = new Howl(
-    {
-        urls: ["assets/TitleScreen_Music.ogg"],
-        loop: true,
-        buffer: true,
-        volume: 0.2
-    });
-    
-    musicGameOver = new Howl(
-    {
-        urls: ["assets/GameOver_Music.mp3"],
-        loop: false,
-        volume: 1.0,
-        buffer: true,
-    });
-    
-    musicWin = new Howl (
-    {
-        urls: ["assets/YouWin_Music.mp3"],
-        loop: false,
-        volume: 1,
-        buffer: true,
-    })
+  
 
 var startbg = [];
 var background = [];
@@ -152,8 +119,7 @@ var splashTimer = 3;
 
 function runSplash(deltaTime)
 {
-	musicBackground.stop();
-        musicTitle.play();
+
 	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true) {
 		gameState = STATE_GAME;
 		return;
@@ -183,6 +149,60 @@ for (var i = 0; i < 50; i++)
 	   starGen[i].SetGenerator(canvas.width, canvas.height, starImage);
 	   
    }
+   musicBackground = new Howl(
+    {
+        urls: ["assets/Game_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume:0.2,
+        onend: function() {
+            musicBackground.play()
+        }
+    });
+    
+    musicTitle = new Howl(
+    {
+        urls: ["assets/TitleScreen_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume: 0.2
+    });
+    
+    musicGameOver = new Howl(
+    {
+        urls: ["assets/GameOver_Music.mp3"],
+        loop: false,
+        volume: 1.0,
+        buffer: true,
+    });
+    
+    musicWin = new Howl (
+    {
+        urls: ["assets/YouWin_Music.mp3"],
+        loop: false,
+        volume: 1,
+        buffer: true,
+    })
+    if(gameState == STATE_SPLASH)
+    {
+        musicBackground.stop();
+        musicTitle.play();
+    }
+    if(gameState == STATE_GAME)
+    {
+        musicTitle.stop();
+        musicBackground.play();
+    }  
+    
+    sfxFire = new Howl(
+    {
+        urls: ["assets/Shoot.mp3"],
+        buffer: true,
+        volume: 1,
+        onend: function() {
+            isSfxPlaying = false;
+        }
+    });
 }
 
 
