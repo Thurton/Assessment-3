@@ -122,6 +122,7 @@ var score = 0;
 var starGen = [];
 var lives = 03;
 var Health_Lives = document.createElement("img");
+var keyboard = new Keyboard();
 
 var player = {
 	image: document.createElement("img"),
@@ -152,12 +153,13 @@ function runSplash(deltaTime)
 {
 	musicBackground.stop();
         musicTitle.play();
-	splashTimer -= deltaTime;
-	if(splashTimer <= 0)
-	{
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true) {
 		gameState = STATE_GAME;
 		return;
 	}
+	
+	
+
 	
 		for(var y=0; y<15; y++)
 	{
