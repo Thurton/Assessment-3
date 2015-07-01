@@ -391,7 +391,7 @@ function spawnAsteroid()
 	var y = SCREEN_HEIGHT/2;
 	
 	var dirX = rand(-10,10);
-	var dirY = rand(-10,10);
+	var dirY = (10,-10);
 	
 	var magnitude = (dirX * dirX) + (dirY * dirY);
 	if(magnitude !=0)
@@ -429,7 +429,7 @@ function spawnCyber()
 	var y = SCREEN_HEIGHT/2;
 	
 	var dirX = rand(-10,10);
-	var dirY = rand(-10,10);
+	var dirY = (10,-10);
 	
 	var magnitude = (dirX * dirX) + (dirY * dirY);
 	if(magnitude !=0)
@@ -466,7 +466,7 @@ function spawnWeepopen()
 	var y = SCREEN_HEIGHT/2
 	
 	var dirX = rand (-10, 10);
-	var dirY = rand (-10, 10);
+	var dirY = (10, -10);
 	
 	var magnitude = (dirX * dirX) + (dirY * dirY);
 	if (magnitude !=0)
