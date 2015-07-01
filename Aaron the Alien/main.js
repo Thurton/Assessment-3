@@ -205,6 +205,25 @@ for (var i = 0; i < 50; i++)
     });
 }
 
+function respawn()
+{
+    if(player.isDead == true && lives > 1)
+    {
+        asteroids.length = 0;
+		bullets.length = 0;
+		player.rotation = 0;
+		score -= 1000;
+        if(score < 0)
+        {
+            score = 0;
+        }
+		player.x = SCREEN_WIDTH/2;
+		player.y = SCREEN_HEIGHT/2;
+        lives -= 1;
+		player.isDead = false;
+    }
+
+}
 
 
 function runGame(deltaTime){
@@ -344,8 +363,9 @@ for (var i = 0; i < 50; i++)
 		if(hit == true)
 		{
 			player.isDead = true;
+            respawn();
 		}
-		if(player.isDead == true)
+		if(player.isDead == true && lives < 1)
 		{gameState = STATE_GAMEOVER;
 		return;}
 		
