@@ -31,7 +31,7 @@ StarGen.prototype.Generate = function()
    this.CreateVelocity();
    this.SetX();
 
-   this.yPos = this.screenHeight;
+   this.yPos = 0;
 }
 
 StarGen.prototype.RunGenerator = function()
@@ -42,9 +42,9 @@ StarGen.prototype.RunGenerator = function()
 
 StarGen.prototype.UpdateStarField = function()
 {
-	this.yPos -= this.velocity;
+	this.yPos += this.velocity;
 
-	if (this.yPos <= 0)
+	if (this.yPos >= 700)
 	{
        this.Generate();
 	}
