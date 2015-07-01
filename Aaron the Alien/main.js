@@ -6,11 +6,6 @@ getDeltaTime()
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
-var STATE_SPLASH = 0;
-var STATE_GAME = 1;
-var STATE_GAMEOVER = 2;
-
-var gameState = STATE_SPLASH;
 
 function getDeltaTime() 
 {
@@ -24,6 +19,10 @@ function getDeltaTime()
 	return deltaTime;
 	}
 
+var STATE_SPLASH = 0;
+var STATE_GAME = 1;
+var STATE_GAMEOVER = 2;
+var gameState = STATE_SPLASH;
 var grass = document.createElement("img");
 grass.src = "assets/Level1_BG_1.jpg";
 
@@ -36,42 +35,11 @@ over.src = "assets/Splash_LOSE.png"
 var starImage = document.createElement("img");
 starImage.src = "star_ice.png"
 
+var fps = 0;
+var fpsCount = 0;
+var fpsTime = 0;
 
-  musicBackground = new Howl(
-    {
-        urls: ["assets/Game_Music.ogg"],
-        loop: true,
-        buffer: true,
-        volume:0.2,
-        onend: function() {
-            musicBackground.play()
-        }
-    });
-    
-    musicTitle = new Howl(
-    {
-        urls: ["assets/TitleScreen_Music.ogg"],
-        loop: true,
-        buffer: true,
-        volume: 0.2
-    });
-    
-    musicGameOver = new Howl(
-    {
-        urls: ["assets/GameOver_Music.mp3"],
-        loop: false,
-        volume: 1.0,
-        buffer: true,
-    });
-    
-    musicWin = new Howl (
-    {
-        urls: ["assets/YouWin_Music.mp3"],
-        loop: false,
-        volume: 1,
-        buffer: true,
-    })
-
+  
 
 var startbg = [];
 var background = [];
@@ -151,8 +119,7 @@ var splashTimer = 3;
 
 function runSplash(deltaTime)
 {
-	musicBackground.stop();
-        musicTitle.play();
+
 	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true) {
 		gameState = STATE_GAME;
 		return;
@@ -182,8 +149,81 @@ for (var i = 0; i < 50; i++)
 	   starGen[i].SetGenerator(canvas.width, canvas.height, starImage);
 	   
    }
+   musicBackground = new Howl(
+    {
+        urls: ["assets/Game_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume:0.2,
+        onend: function() {
+            musicBackground.play()
+        }
+    });
+    
+    musicTitle = new Howl(
+    {
+        urls: ["assets/TitleScreen_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume: 0.2
+    });
+    
+    musicGameOver = new Howl(
+    {
+        urls: ["assets/GameOver_Music.mp3"],
+        loop: false,
+        volume: 1.0,
+        buffer: true,
+    });
+    
+    musicWin = new Howl (
+    {
+        urls: ["assets/YouWin_Music.mp3"],
+        loop: false,
+        volume: 1,
+        buffer: true,
+    })
+    if(gameState == STATE_SPLASH)
+    {
+        musicBackground.stop();
+        musicTitle.play();
+    }
+    if(gameState == STATE_GAME)
+    {
+        musicTitle.stop();
+        musicBackground.play();
+    }  
+    
+    sfxFire = new Howl(
+    {
+        urls: ["assets/Shoot.mp3"],
+        buffer: true,
+        volume: 1,
+        onend: function() {
+            isSfxPlaying = false;
+        }
+    });
 }
 
+function respawn()
+{
+    if(player.isDead == true && lives > 1)
+    {
+        asteroids.length = 0;
+		bullets.length = 0;
+		player.rotation = 0;
+		score -= 1000;
+        if(score < 0)
+        {
+            score = 0;
+        }
+		player.x = SCREEN_WIDTH/2;
+		player.y = SCREEN_HEIGHT/2;
+        lives -= 1;
+		player.isDead = false;
+    }
+
+}
 
 
 function runGame(deltaTime){
@@ -214,8 +254,20 @@ for (var i = 0; i < 50; i++)
 		}
 	}
 	
-	musicTitle.stop();
-        musicBackground.play();
+	fpsTime += deltaTime;
+    fpsCount++;
+    if(fpsTime >= 1)
+    {
+        fpsTime -= 1;
+        fps = fpsCount;
+        fpsCount = 0;
+    }  
+
+    // draw the FPS
+    context.fillStyle = "yellow";
+    context.font="14px Arial";
+    context.fillText("FPS: " + fps, 60, 30, 100);	
+	
 	
 	if(shootTimer > 0)
 		shootTimer -= deltaTime;
@@ -311,8 +363,9 @@ for (var i = 0; i < 50; i++)
 		if(hit == true)
 		{
 			player.isDead = true;
+            respawn();
 		}
-		if(player.isDead == true)
+		if(player.isDead == true && lives < 1)
 		{gameState = STATE_GAMEOVER;
 		return;}
 		
