@@ -37,6 +37,41 @@ var starImage = document.createElement("img");
 starImage.src = "star_ice.png"
 
 
+  musicBackground = new Howl(
+    {
+        urls: ["assets/Game_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume:0.2,
+        onend: function() {
+            musicBackground.play()
+        }
+    });
+    
+    musicTitle = new Howl(
+    {
+        urls: ["assets/TitleScreen_Music.ogg"],
+        loop: true,
+        buffer: true,
+        volume: 0.2
+    });
+    
+    musicGameOver = new Howl(
+    {
+        urls: ["assets/GameOver_Music.mp3"],
+        loop: false,
+        volume: 1.0,
+        buffer: true,
+    });
+    
+    musicWin = new Howl (
+    {
+        urls: ["assets/YouWin_Music.mp3"],
+        loop: false,
+        volume: 1,
+        buffer: true,
+    })
+
 
 var startbg = [];
 var background = [];
@@ -113,6 +148,8 @@ var splashTimer = 3;
 
 function runSplash(deltaTime)
 {
+	musicBackground.stop();
+        musicTitle.play();
 	splashTimer -= deltaTime;
 	if(splashTimer <= 0)
 	{
@@ -172,6 +209,9 @@ for (var i = 0; i < 50; i++)
     }
 		}
 	}
+	
+	musicTitle.stop();
+        musicBackground.play();
 	
 	if(shootTimer > 0)
 		shootTimer -= deltaTime;
@@ -304,6 +344,7 @@ for (var i = 0; i < 50; i++)
 }
 function runGameOver (deltaTime)
 {
+	
 		for(var y=0; y<15; y++)
 	{
 		for(var x=0; x<20; x++)
@@ -313,6 +354,7 @@ function runGameOver (deltaTime)
 			
 		}
 	}
+	
 }
 
 function spawnAsteroid()
@@ -441,6 +483,7 @@ function playerShoot()
 		height: 19,
 		velocityX: 0,
 		velocityY: 0
+		
 		
 	};
 	
