@@ -6,11 +6,6 @@ getDeltaTime()
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
-var STATE_SPLASH = 0;
-var STATE_GAME = 1;
-var STATE_GAMEOVER = 2;
-
-var gameState = STATE_SPLASH;
 
 function getDeltaTime() 
 {
@@ -24,6 +19,10 @@ function getDeltaTime()
 	return deltaTime;
 	}
 
+var STATE_SPLASH = 0;
+var STATE_GAME = 1;
+var STATE_GAMEOVER = 2;
+var gameState = STATE_SPLASH;
 var grass = document.createElement("img");
 grass.src = "assets/Level1_BG_1.jpg";
 
@@ -36,6 +35,9 @@ over.src = "assets/Splash_LOSE.png"
 var starImage = document.createElement("img");
 starImage.src = "star_ice.png"
 
+var fps = 0;
+var fpsCount = 0;
+var fpsTime = 0;
 
   musicBackground = new Howl(
     {
@@ -71,7 +73,6 @@ starImage.src = "star_ice.png"
         volume: 1,
         buffer: true,
     })
-
 
 var startbg = [];
 var background = [];
@@ -214,8 +215,20 @@ for (var i = 0; i < 50; i++)
 		}
 	}
 	
-	musicTitle.stop();
-        musicBackground.play();
+	fpsTime += deltaTime;
+    fpsCount++;
+    if(fpsTime >= 1)
+    {
+        fpsTime -= 1;
+        fps = fpsCount;
+        fpsCount = 0;
+    }  
+
+    // draw the FPS
+    context.fillStyle = "yellow";
+    context.font="14px Arial";
+    context.fillText("FPS: " + fps, 60, 30, 100);	
+	
 	
 	if(shootTimer > 0)
 		shootTimer -= deltaTime;
