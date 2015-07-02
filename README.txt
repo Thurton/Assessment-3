@@ -5,7 +5,7 @@ player sprite by ryan
 
 background by grant
 
-enemy sprites by Xavier4321 (http://opengameart.org/content/parts2-art-space-ships), recoloured by grant
+enemy sprites by Xavier4321 (http://opengameart.org/content/parts2-art-space-ships), recoloured by grant, fixed by ryan
 
 boss sprite by ryan
 
