@@ -7,7 +7,7 @@ background by Brad
 
 Music by Grant
 
-enemy sprites by Xavier4321 (http://opengameart.org/content/parts2-art-space-ships), recoloured by grant
+enemy sprites by Xavier4321 (http://opengameart.org/content/parts2-art-space-ships), recoloured by grant, fixed by ryan
 
 
 alt boss sprite by MillionthVector (http://opengameart.org/content/set-faction10-spaceships)
